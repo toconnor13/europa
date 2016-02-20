@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+
+{% block breadcrumb_menu %}
+<li class="active">{% trans "Home" %}</li>
+{% endblock %}
+
+{% block main %}
+{% blocktrans %}
+<h2>Time for a New Approach</h2>
+<p>
+    Welcome to the website of the Vive l'Europe Party.  These are trying times for Europe.
+    Daily we hear news which illustrates the manner in which the people of Europe have
+    lost control of their destiny.  The purpose of this party is to reverse this situation; to exercise control over the present, and to   
+</p>
+<ul>
+    <li><a href="/admin/">Log in to the admin interface</a></li>
+</ul>
+{% endblocktrans %}
+{% endblock %}
