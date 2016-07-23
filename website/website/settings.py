@@ -86,7 +86,7 @@ ADMINS = (
 
 # If True, the django-modeltranslation will be added to the
 # INSTALLED_APPS setting.
-USE_MODELTRANSLATION = False
+USE_MODELTRANSLATION = True
 
 
 ########################
@@ -95,7 +95,9 @@ USE_MODELTRANSLATION = False
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+		'127.0.0.1:8000',
+		'www.proactive-europeans.eu']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -116,6 +118,10 @@ LANGUAGE_CODE = "en"
 # Supported languages
 LANGUAGES = (
     ('en', _('English')),
+    ('de', _('German')),
+    ('fr', _('French')),
+    ('it', _('Italian')),
+    ('nl', _("Dutch"))
 )
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
@@ -130,7 +136,7 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = False
+USE_I18N = True
 
 AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
 
@@ -146,9 +152,9 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 DATABASES = {
     "default": {
         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-        "ENGINE": "django.db.backends.",
+        "ENGINE": "django.db.backends.sqlite3",
         # DB name or path to database file if using sqlite3.
-        "NAME": "",
+        "NAME": "dev.db",
         # Not used with sqlite3.
         "USER": "",
         # Not used with sqlite3.
@@ -182,9 +188,10 @@ STATIC_URL = "/static/"
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
-
+# Example: "/home/media/media.lawrence.com/static/":w
+STATIC_DIR = "theme/" + STATIC_URL.strip("/")
+STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_DIR)
+print STATIC_ROOT
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
@@ -233,6 +240,7 @@ if DJANGO_VERSION < (1, 9):
 ################
 
 INSTALLED_APPS = (
+		"theme",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -250,8 +258,9 @@ INSTALLED_APPS = (
     "mezzanine.forms",
     "mezzanine.galleries",
     "mezzanine.twitter",
-    # "mezzanine.accounts",
-    # "mezzanine.mobile",
+    "modeltranslation",
+    "mezzanine.accounts",
+    "mezzanine.mobile",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -339,3 +348,5 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
+    
+
