@@ -50,7 +50,7 @@ env.key_filename = conf.get("SSH_KEY_PATH", None)
 env.hosts = conf.get("HOSTS", [""])
 
 env.proj_name = conf.get("PROJECT_NAME", env.proj_app)
-env.venv_home = conf.get("VIRTUALENV_HOME", "/home/%s/.virtualenvs" % env.user)
+env.venv_home = conf.get("VIRTUALENV_HOME", "/home/%s/europa/venv" % env.user)
 env.venv_path = join(env.venv_home, env.proj_name)
 env.proj_path = "/home/%s/europa/%s" % (env.user, env.proj_name)
 env.manage = "%s/bin/python %s/manage.py" % (env.venv_path, env.proj_path)
@@ -635,7 +635,7 @@ def deploy():
             rsync_upload()
     with project():
         manage("collectstatic -v 0 --noinput")
-        manage("syncdb --noinput")
+	#manage("syncdb --noinput")
         manage("migrate --noinput")
     for name in get_templates():
         upload_template_and_reload(name)

@@ -1,8 +1,1 @@
 *.pyc
-*.pyo
-*.db
-*.py.swp
-.DS_Store
-.coverage
-local_settings.py
-/static
