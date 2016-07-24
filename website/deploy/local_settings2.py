@@ -10,8 +10,8 @@ ALLOWED_HOSTS = ["localhost",
 
 FABRIC = {
 		    "DEPLOY_TOOL": "git",  # Deploy with "git", "hg", or "rsync"
-		        "SSH_USER": "root",  # VPS SSH username
-			    "HOSTS": ["123.123.123.123"],  # The IP address of your VPS
+		        "SSH_USER": "moritz",  # VPS SSH username
+			"HOSTS": ["188.166.161.103"],  # The IP address of your VPS
 			        "DOMAINS": ALLOWED_HOSTS,  # Edit domains in ALLOWED_HOSTS
 				    "REQUIREMENTS_PATH": "requirements.txt",  # Project's pip requirements
 				        "LOCALE": "en_US.UTF-8",  # Should end with ".UTF-8"
