@@ -1,4 +1,3 @@
-
 from __future__ import absolute_import, unicode_literals
 import os
 
@@ -9,6 +8,9 @@ ADMINS = (
 		     ('Tony O\'Connor', 'toconnor13@gmail.com'),
 )
 
+
+ae_mail_pwd = os.environ['AE_MAIL_PWD']
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ######################
 # MEZZANINE SETTINGS #
 ######################
@@ -270,7 +272,7 @@ MIDDLEWARE_CLASSES = (
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     # Uncomment if using internationalisation or localisation
-    # 'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -349,3 +351,9 @@ else:
     set_dynamic_settings(globals())
     
 
+SERVER_EMAIL = 'active.europeans@gmail.com'
+EMAIL_USE_TLS=True
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER='active.europeans@gmail.com'
+EMAIL_HOST_PASSWORD = ae_mail_pwd
+EMAIL_PORT=587
