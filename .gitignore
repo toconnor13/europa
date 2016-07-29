@@ -1,1 +1,4 @@
 *.pyc
+/venv/*
+*local_settings*
+*.swp
