@@ -683,3 +683,7 @@ def all():
     install()
     if create():
         deploy()
+
+@task
+def migrate_fake():
+	return run("/home/moritz/europa/venv/website/bin/python /home/moritz/europa/website/manage.py migrate --fake")
